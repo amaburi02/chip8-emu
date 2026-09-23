@@ -5,7 +5,7 @@ class chip8 {
 private:
 
 public:
-    void chip8::initialize() {
+    void initialize() {
         //Initialize registers and memory once
         unsigned short opcode;
         unsigned char memory[4096];
@@ -19,10 +19,8 @@ public:
         unsigned short stack_ptr;
         unsigned char key[16];
     }
-    void chip8::emulate_cycle() {
-        //fetch, decode, and execute opcode
-        //update timers
-    }
+    void load_game();
+    void emulate_cycle();
 };
 
 #endif
