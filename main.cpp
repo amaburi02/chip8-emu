@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
-#include <filesystem>
 
 chip8 my_chip8;
 
@@ -15,7 +14,7 @@ int main(int argc, char **argv) {
     //std::cin >> filename;
     unsigned char x;
 
-    std::ofstream output_hex("hex.txt");
+    std::fstream output_hex("hex.txt");
     std::ifstream hex(filename, std::ios::binary);
 
     if (!hex.is_open()) {
@@ -27,10 +26,11 @@ int main(int argc, char **argv) {
     while (hex >> x) {
         output_hex << std::hex << std::setw(2) << std::setfill('0') << (int)x << " ";
     }
-/*
+
     // Initialize the Chip8 system and load the game into the memory  
     my_chip8.initialize();
-    my_chip8.load_game();
+    my_chip8.load_game(output_hex);
+    /*
     // Emulation loop
     for(;;) {
     // Emulate one cycle
